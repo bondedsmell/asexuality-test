@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mac版无性恋测试</title>
+    <style>
+        body{font-family:Arial,sans-serif;max-width:800px;margin:20px auto;padding:20px;background:#f8f8f8;}
+        .question{margin:15px 0;padding:15px;background:white;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+        .option{margin:8px 0;padding:8px;border:1px solid #ddd;border-radius:4px;cursor:pointer;}
+        .option:hover{background:#e8f4ff;}
+        .option.selected{background:#d1e7fe;border-color:#69b1ff;}
+        #submit{display:block;margin:20px auto;padding:12px 30px;background:#0071e3;color:white;border:none;border-radius:20px;font-size:16px;cursor:pointer;}
+        #result{margin-top:20px;padding:20px;background:white;border-radius:8px;display:none;}
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;color:#333;">无性恋自我测试（mac便捷版）</h1>
+    <p style="text-align:center;color:#666;">参考小荷医典核心维度，共8题，选完点“查看结果”</p>
+
+    <!-- 测试题（含权威参考维度） -->
+    <div class="question">1. 你对他人的身体是否从未产生过性欲或性吸引力？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">偶尔</div><div class="option" data-score="0">否</div></div>
+    </div>
+    <div class="question">2. 你是否对性行为没有兴趣，甚至感到不适？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">偶尔</div><div class="option" data-score="0">否</div></div>
+    </div>
+    <div class="question">3. 你对他人的情感喜欢，是否不依赖性吸引力？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">不确定</div><div class="option" data-score="0">否</div></div>
+    </div>
+    <div class="question">4. 你是否对浪漫关系（如恋爱）没有主动渴望？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">偶尔</div><div class="option" data-score="0">否</div></div>
+    </div>
+    <div class="question">5. 你是否更倾向于独处，而非与他人建立亲密联结？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">偶尔</div><div class="option" data-score="0">否</div></div>
+    </div>
+    <div class="question">6. 你是否确认自己不属于异性恋、同性恋或双性恋？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">不确定</div><div class="option" data-score="0">否</div></div>
+    </div>
+    <div class="question">7. 若进行性行为，你是否不会从中获得情感满足？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">偶尔</div><div class="option" data-score="0">否</div></div>
+    </div>
+    <div class="question">8. 上述状态是否稳定存在超过1年（排除特殊压力期）？
+        <div class="options"><div class="option" data-score="2">是</div><div class="option" data-score="1">接近1年</div><div class="option" data-score="0">否</div></div>
+    </div>
+
+    <button id="submit">查看结果</button>
+    <div id="result"><div id="resultText"></div><p style="color:#666;">注：结果仅作参考，有困惑可咨询性学专家（参考PS大众科学建议）</p></div>
+
+    <script>
+        // 选中选项逻辑
+        document.querySelectorAll('.option').forEach(o=>o.onclick=()=>{
+            o.parentElement.querySelectorAll('.option').forEach(s=>s.classList.remove('selected'));
+            o.classList.add('selected');
+        });
+        // 计算结果
+        document.getElementById('submit').onclick=()=>{
+            let score=0, unfinish=0;
+            document.querySelectorAll('.question').forEach(q=>{
+                const s=q.querySelector('.selected');
+                if(s) score+=parseInt(s.dataset.score);
+                else unfinish++;
+            });
+            if(unfinish>0) alert(`还有${unfinish}题没选哦～`);
+            else{
+                let res=score>=12?"倾向无性恋（符合核心特征，可进一步了解光谱类型）":
+                       score>=8?"有无性恋倾向（建议结合长期体验观察）":
+                       "暂不倾向无性恋（可能是其他取向或暂时状态）";
+                document.getElementById('resultText').innerHTML=`<h3>你的结果：${res}</h3>`;
+                document.getElementById('result').style.display='block';
+            }
+        };
+    </script>
+</body>
+</html>
