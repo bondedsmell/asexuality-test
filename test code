@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>无性恋取向测试</title>
+    <style>
+        /* 页面美化样式 */
+        body {
+            font-family: "微软雅黑", sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        .question {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .option {
+            margin: 8px 0;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background: #e9f5ff;
+        }
+        .option.selected {
+            background: #d1e7fe;
+            border-color: #96c6ff;
+        }
+        #submit {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 30px;
+            font-size: 16px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #submit:hover {
+            background: #3367d6;
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none; /* 初始隐藏结果 */
+        }
+        .result-title {
+            color: #2c3e50;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .result-content {
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+        .reminder {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 4px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>无性恋取向测试</h1>
+        <p style="text-align:center; color:#666;">请根据长期真实感受选择，完成后点击"查看结果"（共15题）</p>
+
+        <!-- 测试题目区域 -->
+        <div id="questions">
+            <!-- 第1题 -->
+            <div class="question">
+                <p>1. 无论面对男性、女性或其他性别者，我从未产生过“想与对方发生性接触”的渴望。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第2题 -->
+            <div class="question">
+                <p>2. 看到他人（包括欣赏、有好感的人）时，我不会因对方的外貌、气质等产生性层面的冲动或幻想。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第3题 -->
+            <div class="question">
+                <p>3. 成人影片、色情信息等性相关内容，从未让我感到性唤起，甚至觉得不适或无关。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第4题 -->
+            <div class="question">
+                <p>4. 即使对某人有很深的好感，也不会因此产生性层面的渴望。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第5题 -->
+            <div class="question">
+                <p>5. 与他人建立亲密关系时，我从不会将“性接触”作为关系中不可或缺的部分。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第6题 -->
+            <div class="question">
+                <p>6. 上述对性吸引的“缺乏感”，已持续存在超过1年（排除青春期前、重大压力/创伤期等特殊阶段）。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第7题 -->
+            <div class="question">
+                <p>7. 这种“缺乏感”不受“是否遇到合拍的人”影响，始终保持稳定。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第8题 -->
+            <div class="question">
+                <p>8. 我不会因“对他人没有性吸引”而刻意改变自己，也不认为这是需要纠正的“缺陷”。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第9题 -->
+            <div class="question">
+                <p>9. 我“不倾向于与他人发生性接触”，核心原因是“没有性吸引”，而非害羞、性恐惧或感情未到。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第10题 -->
+            <div class="question">
+                <p>10. 即使在深度信任、情感契合的亲密关系中，我也没有主动产生性接触的需求。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第11题 -->
+            <div class="question">
+                <p>11. 我没有建立浪漫关系（恋爱、专属伴侣）的渴望。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第12题 -->
+            <div class="question">
+                <p>12. 比起恋爱关系，我更享受独处或柏拉图式的友情、亲情。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第13题 -->
+            <div class="question">
+                <p>13. 若遇到情感契合的人，我愿意建立浪漫关系，但依然不会有性接触的需求。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第14题 -->
+            <div class="question">
+                <p>14. 我对陌生人或无情感联结的人，完全不会产生浪漫好感或性吸引。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+
+            <!-- 第15题 -->
+            <div class="question">
+                <p>15. 只有与他人建立长期深厚的情感联结后，我才可能偶尔产生极其微弱的性好奇（非必然）。</p>
+                <div class="options">
+                    <div class="option" data-score="3">完全符合</div>
+                    <div class="option" data-score="2">基本符合</div>
+                    <div class="option" data-score="1">不确定</div>
+                    <div class="option" data-score="0">基本不符合</div>
+                    <div class="option" data-score="-1">完全不符合</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提交按钮 -->
+        <button id="submit">查看结果</button>
+
+        <!-- 结果显示区域 -->
+        <div id="result">
+            <div class="result-title">你的测试结果：</div>
+            <div class="result-content" id="resultText"></div>
+            <div class="reminder">
+                <p>⚠️ 提醒：本测试仅为自我探索参考，不构成专业诊断。最终取向认同以自身长期真实感受为准，如有困惑可寻求专业咨询师支持。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 选项点击逻辑：选中时高亮，记录分数
+        const options = document.querySelectorAll('.option');
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                // 取消同一题的其他选项选中状态
+                const siblings = option.parentElement.querySelectorAll('.option');
+                siblings.forEach(sib => sib.classList.remove('selected'));
+                // 选中当前选项
+                option.classList.add('selected');
+            });
+        });
+
+        // 提交按钮逻辑：计算分数并显示结果
+        document.getElementById('submit').addEventListener('click', () => {
+            let totalScore = 0; // 总分
+            let part1Score = 0; // 1-10题得分（性吸引+稳定性）
+            let q11Score = 0;   // 第11题得分
+            let q12Score = 0;   // 第12题得分
+            let q13Score = 0;   // 第13题得分
+            let q15Score = 0;   // 第15题得分
+            let q14Score = 0;   // 第14题得分
+
+            // 遍历所有题目，收集分数
+            const questions = document.querySelectorAll('.question');
+            questions.forEach((question, index) => {
+                const selectedOption = question.querySelector('.option.selected');
+                if (!selectedOption) {
+                    alert(`请完成第${index+1}题再提交哦~`);
+                    return; // 未完成题目时终止
+                }
+                const score = parseInt(selectedOption.dataset.score);
+                totalScore += score;
+
+                // 记录关键题得分
+                if (index < 10) { // 1-10题（索引0-9）
+                    part1Score += score;
+                }
+                if (index === 10) q11Score = score; // 第11题（索引10）
+                if (index === 11) q12Score = score; // 第12题（索引11）
+                if (index === 12) q13Score = score; // 第13题（索引12）
+                if (index === 13) q14Score = score; // 第14题（索引13）
+                if (index === 14) q15Score = score; // 第15题（索引14）
+            });
+
+            // 匹配结果（和Excel逻辑一致）
+            let resultType = '';
+            let resultDesc = '';
+
+            if (totalScore >= 35 && part1Score >= 25 && (q11Score >= 2 || q13Score >= 2)) {
+                resultType = '纯无性恋（Asexual）';
+                resultDesc = '你大概率属于纯无性恋（Ace），对他人完全缺乏稳定的性吸引，性并非你情感生活的必要部分。你可能有或没有浪漫倾向，但核心是“性吸引的缺失”稳定且无痛苦感，这是无性恋光谱的典型表现。';
+            } else if (totalScore >= 32 && part1Score >= 23 && (q11Score + q12Score) >= 5) {
+                resultType = '无浪漫倾向无性恋（Aro-Ace）';
+                resultDesc = '你大概率属于无浪漫倾向无性恋（Aro-Ace），既缺乏性吸引，也没有建立浪漫关系的渴望。独处或非浪漫的情感联结（亲情、友情）已能满足你的情感需求，这是无性恋光谱中完全自洽的一种状态。';
+            } else if (totalScore >= 25 && totalScore <= 34 && part1Score >= 18 && q15Score >= 1) {
+                resultType = '灰色无性恋（Graysexual）';
+                resultDesc = '你大概率属于灰色无性恋（Gray-A），对他人的性吸引极其微弱、罕见或短暂，大部分时间保持无性恋核心特征。偶尔可能在特定条件下产生微弱性好奇，但不会转化为实际需求，这是无性恋光谱中常见的中间状态。';
+            } else if (totalScore >= 20 && totalScore <= 32 && part1Score >= 16 && q14Score >= 2 && q15Score >= 2) {
+                resultType = '半无性恋（Demisexual）';
+                resultDesc = '你大概率属于半无性恋（Demi），性吸引的产生必须以深厚情感联结为前提，无情感基础时对任何人都无性别吸引。你可能有浪漫倾向，但性吸引的“触发条件”是核心特征，属于无性恋光谱的重要分支。';
+            } else if (totalScore >= 20 && totalScore <= 34 && part1Score >= 17 && q13Score >= 2 && q11Score <= 1) {
+                resultType = '有浪漫倾向无性恋（Romantic Asexual）';
+                resultDesc = '你大概率属于有浪漫倾向无性恋，缺乏性吸引但渴望建立浪漫关系（恋爱、陪伴）。你的亲密关系核心是精神契合，性并非必要组成，这种状态完全符合无性恋光谱的定义，无需因“想恋爱”而怀疑自身取向。';
+            } else if (totalScore >= 5 && totalScore <= 19) {
+                resultType = '中性倾向，需进一步观察';
+                resultDesc = '你的体验介于多种类型之间，无需急于贴标签。建议以1年为周期持续观察，重点关注“性吸引是否稳定”，自我接纳比分类更重要。';
+            } else {
+                resultType = '暂不倾向无性恋光谱';
+                resultDesc = '你的体验较少符合无性恋核心特征，可能是暂时未遇到引发性吸引的对象，或属于其他性取向。建议结合自身情感体验进一步探索，无需强行关联无性恋标签。';
+            }
+
+            // 显示结果
+            document.getElementById('resultText').innerHTML = `<p><strong>细分类型参考：${resultType}</strong></p><p>${resultDesc}</p>`;
+            document.getElementById('result').style.display = 'block';
+            // 滚动到结果区域
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
